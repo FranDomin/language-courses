@@ -1,0 +1,23 @@
+@isTest
+private class TestLanguageCourse 
+{
+    @isTest static void testDeleteLanguageCourse() 
+    {
+        Language_Course_Instructor__c pepito = new Language_Course_Instructor__c(Name='Pepito');
+        insert pepito;
+        Language_Course_Designer__c juanito = new Language_Course_Designer__c(Name='Juanito');
+        insert juanito;
+        
+        Language_Course__c curso = new Language_Course__c(Name = 'Test Course', Course_Instructor__c = pepito.Id, Language_Course_Designer__c = juanito.Id);
+        insert curso;
+        
+        Test.startTest();
+        
+        Database.DeleteResult result = Database.delete(curso, false);
+        
+        Test.stopTest();
+        
+        System.assert(result.isSuccess());
+    }
+    
+}

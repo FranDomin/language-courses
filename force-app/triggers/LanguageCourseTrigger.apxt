@@ -1,0 +1,5 @@
+trigger LanguageCourseTrigger on Language_Course__c (after insert, after update, after delete) 
+{	
+	EmailManager.sendMail('frangardo@gmail.com', 'Operación Salesforce', '¡Operación realizada con éxito!');
+    EmailManager.sendMail('franciomin123@gmail.com', 'Operación Salesforce', '¡Operación realizada con éxito!');
+}
